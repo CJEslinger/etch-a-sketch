@@ -7,4 +7,14 @@ body {
     height: 400px;
     background-color: #ffffff;
     box-shadow: #b9b9b9 0px 0px 10px 2px;
+    display: flex;
+    flex-wrap: wrap;
+    align-content: flex-start;
+}
+
+.grid-unit {
+    border: 2px solid black;
+    box-sizing: border-box;
+    width: 25px;
+    height: 25px;
 }
