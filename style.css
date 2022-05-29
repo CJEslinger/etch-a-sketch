@@ -26,3 +26,14 @@ body {
 .colored-grid-unit {
     background-color: black;
 }
+
+button {
+    background-color: #3187ff;
+    font-family: sans-serif;
+    color: white;
+    font-weight: bold;
+    border: none;
+    padding: 8px 24px 8px 24px;
+    border-radius: 8px;
+    cursor: pointer;
+}
