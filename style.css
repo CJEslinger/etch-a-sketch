@@ -1,10 +1,18 @@
 body {
     background-color: #e9e9e9;
+    font-family: sans-serif;
+}
+
+.content-container {
+    display: flex;
+    gap: 24px;
+    justify-content: center;
 }
 
 .grid-container {
     width: 400px;
     height: 400px;
+    flex-shrink: 0;
     background-color: #ffffff;
     box-shadow: #b9b9b9 0px 0px 10px 2px;
     display: flex;
@@ -27,13 +35,46 @@ body {
     background-color: black;
 }
 
+
+
+.grid-editor {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px;
+    background-color: rgb(76, 95, 105);
+    border-radius: 16px;
+}
+
 button {
     background-color: #3187ff;
-    font-family: sans-serif;
     color: white;
     font-weight: bold;
     border: none;
     padding: 8px 24px 8px 24px;
     border-radius: 8px;
     cursor: pointer;
+}
+
+.grid-sizer {
+    width: 300px;
+    appearance: none;
+    border-radius: 8px;
+    margin: 0;
+}
+
+#input-slider {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+}
+
+#input-slider h4{
+    margin: 0;
+    color: white;
+}
+
+.grid-sizer::-webkit-slider-thumb {
 }

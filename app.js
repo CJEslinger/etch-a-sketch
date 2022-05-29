@@ -47,12 +47,15 @@ function createGridUnits(startingSize) {
 
 function allowColorChange() {
     gridUnits.forEach(gridUnit => {
-        gridUnit.addEventListener('mouseenter', () => {
+        gridUnit.addEventListener('mouseover', () => {
                 checkMouseDown();
                 if (mouseDown == true) {
                 gridUnit.classList.add('colored-grid-unit');
-                }
+            }
         }); 
+        gridUnit.addEventListener('mousedown', () => {
+            gridUnit.classList.add('colored-grid-unit');
+        });
     });
 }
 
