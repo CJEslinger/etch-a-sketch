@@ -7,11 +7,12 @@ let gridSize = (num) => {return Math.pow(num, 2);};
 let currentColor = ('#ffffff');
 let gridUnits = [];
 const sizeChanger = document.querySelector('button');
-
+let mouseDown = false;
 
 createGridUnits(gridSize(numOfColumnsRows));
-sizeChanger.addEventListener('click', () => {
-    createGridUnits(gridSize(chooseGridSize()));})
+sizeChanger.addEventListener('click', () => {createGridUnits(gridSize(chooseGridSize()));})
+let checkMouseDown = () => gridContainer.addEventListener('mousedown', () => {debugger; mouseDown = true});
+gridContainer.addEventListener('mouseup', () => {debugger; mouseDown = false})
 
 function createGridUnits(size) {
     deletePrevGrid();
@@ -22,15 +23,20 @@ function createGridUnits(size) {
         gridUnits[i].classList.add('grid-unit');
         gridContainer.appendChild(gridUnits[i]);
     }
-    debugger
     properlySizeGrid(gridUnits, size);
     allowColorChange(gridUnits, gridUnit);
 }
 
 function allowColorChange(arr, arrIn) {
     arr.forEach(arrIn => {
-        arrIn.addEventListener('mouseover', () => {
-            arrIn.classList.add('colored-grid-unit')
+        arrIn.addEventListener('mouseenter', () => {
+                debugger;
+                checkMouseDown();
+                debugger;
+                if (mouseDown == true) {
+                debugger;
+                arrIn.classList.add('colored-grid-unit');
+                }
         }); 
     });
 }
