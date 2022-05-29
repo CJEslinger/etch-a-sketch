@@ -43,6 +43,7 @@ function deletePrevGrid() {
     }
     while (gridContainer.firstChild) {
         gridContainer.removeChild(gridContainer.firstChild);
+        gridUnits.pop();
     }
 }
 
