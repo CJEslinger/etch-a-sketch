@@ -42,11 +42,6 @@ function allowColorChange() {
 }
 
 function deletePrevGrid() {
-    if (gridUnits.length !== 0) {
-        gridUnits.forEach(gridUnit => {
-            gridUnit.classList.remove('.grid-unit');
-        });
-    }
     while (gridContainer.firstChild) {
         gridContainer.removeChild(gridContainer.firstChild);
         gridUnits.pop();
