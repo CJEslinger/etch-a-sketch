@@ -23,19 +23,19 @@ function createGridUnits(size) {
         gridUnits[i].classList.add('grid-unit');
         gridContainer.appendChild(gridUnits[i]);
     }
-    properlySizeGrid(gridUnits, size);
-    allowColorChange(gridUnits, gridUnit);
+    properlySizeGrid(size);
+    allowColorChange();
 }
 
-function allowColorChange(arr, arrIn) {
-    arr.forEach(arrIn => {
-        arrIn.addEventListener('mouseenter', () => {
+function allowColorChange() {
+    gridUnits.forEach(gridUnit => {
+        gridUnit.addEventListener('mouseenter', () => {
                 debugger;
                 checkMouseDown();
                 debugger;
                 if (mouseDown == true) {
                 debugger;
-                arrIn.classList.add('colored-grid-unit');
+                gridUnit.classList.add('colored-grid-unit');
                 }
         }); 
     });
@@ -53,7 +53,7 @@ function deletePrevGrid() {
     }
 }
 
-function properlySizeGrid(gridUnits, size) {
+function properlySizeGrid(size) {
     gridUnits.forEach(gridUnit => {
         gridUnit.style = 
         `width: ${GRIDCONTAINERSIZE/Math.sqrt(size)}px; 
