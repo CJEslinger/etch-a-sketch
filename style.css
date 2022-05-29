@@ -22,3 +22,7 @@ body {
 .grid-unit:hover {
     background-color: #7a7a7a;
 }
+
+.colored-grid-unit {
+    background-color: black;
+}

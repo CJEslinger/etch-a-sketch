@@ -1,4 +1,5 @@
 const gridContainer = document.querySelector('.grid-container');
+let gridUnit = document.createElement('div');
 const GRIDCONTAINERSIZE = 400;
 gridContainer.style = `width: ${GRIDCONTAINERSIZE}px; height: ${GRIDCONTAINERSIZE}px;`
 let numOfColumnsRows = 10;
@@ -7,6 +8,7 @@ let currentColor = ('#ffffff');
 let gridUnits = [];
 const sizeChanger = document.querySelector('button');
 
+
 createGridUnits(gridSize(numOfColumnsRows));
 sizeChanger.addEventListener('click', () => {
     createGridUnits(gridSize(chooseGridSize()));})
@@ -14,12 +16,23 @@ sizeChanger.addEventListener('click', () => {
 function createGridUnits(size) {
     deletePrevGrid();
     for (let i = 0; i < size; i++) {
-        const gridUnit = document.createElement('div');
-        gridContainer.appendChild(gridUnit);
-        gridUnit.classList.add('grid-unit');
+        
+        gridUnit = document.createElement('div');
+        gridUnits.push(gridUnit);
+        gridUnits[i].classList.add('grid-unit');
+        gridContainer.appendChild(gridUnits[i]);
     }
-    gridUnits = document.querySelectorAll('.grid-unit');
+    debugger
     properlySizeGrid(gridUnits, size);
+    allowColorChange(gridUnits, gridUnit);
+}
+
+function allowColorChange(arr, arrIn) {
+    arr.forEach(arrIn => {
+        arrIn.addEventListener('mouseover', () => {
+            arrIn.classList.add('colored-grid-unit')
+        }); 
+    });
 }
 
 function deletePrevGrid() {
