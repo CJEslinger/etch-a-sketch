@@ -13,7 +13,7 @@ body {
 }
 
 .grid-unit {
-    border: 0px solid black;
+    border: 1px solid black;
     box-sizing: border-box;
     width: 25px;
     height: 25px;

@@ -1,18 +1,20 @@
-const gridContainer = document.querySelector('.grid-container');
-let gridUnit = document.createElement('div');
-const GRIDCONTAINERSIZE = 400;
-gridContainer.style = `width: ${GRIDCONTAINERSIZE}px; height: ${GRIDCONTAINERSIZE}px;`
-const STARTINGROWSVALUE = 10;
-let numOfColumnsRows = Math.pow(STARTINGROWSVALUE, 2);
-let currentColor = ('#ffffff');
-let gridUnits = [];
 const sizeChanger = document.querySelector('button');
-let mouseDown = false;
-
-createGridUnits(numOfColumnsRows);
 sizeChanger.addEventListener('click', () => {createGridUnits();})
 
-let checkMouseDown = () => gridContainer.addEventListener('mousedown', () => {mouseDown = true});
+const GRIDCONTAINERSIZE = 400;
+const gridContainer = document.querySelector('.grid-container');
+gridContainer.style = `width: ${GRIDCONTAINERSIZE}px; height: ${GRIDCONTAINERSIZE}px;`
+let gridUnit = document.createElement('div');
+let gridUnits = [];
+
+let numOfColumnsRows = 10;
+const STARTINGROWSVALUE = Math.pow(numOfColumnsRows,2);
+numOfColumnsRows = STARTINGROWSVALUE;
+let currentColor = ('#ffffff');
+createGridUnits(STARTINGROWSVALUE);
+
+let mouseDown = false;
+const checkMouseDown = () => gridContainer.addEventListener('mousedown', () => {mouseDown = true});
 gridContainer.addEventListener('mouseup', () => {mouseDown = false})
 
 let gridSize = () => {
@@ -27,7 +29,7 @@ function chooseGridSize () {
 
 function createGridUnits(startingSize) {
     //startingSize is for the developer, in inital bootup
-    if (startingSize != numOfColumnsRows) {
+    if (startingSize != STARTINGROWSVALUE) {
     chooseGridSize();
     gridSize();
     deletePrevGrid();
