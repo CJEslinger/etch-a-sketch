@@ -2,28 +2,44 @@ const gridContainer = document.querySelector('.grid-container');
 let gridUnit = document.createElement('div');
 const GRIDCONTAINERSIZE = 400;
 gridContainer.style = `width: ${GRIDCONTAINERSIZE}px; height: ${GRIDCONTAINERSIZE}px;`
-let numOfColumnsRows = 10;
-let gridSize = (num) => {return Math.pow(num, 2);};
+const STARTINGROWSVALUE = 10;
+let numOfColumnsRows = Math.pow(STARTINGROWSVALUE, 2);
 let currentColor = ('#ffffff');
 let gridUnits = [];
 const sizeChanger = document.querySelector('button');
 let mouseDown = false;
 
-createGridUnits(gridSize(numOfColumnsRows));
-sizeChanger.addEventListener('click', () => {createGridUnits(gridSize(chooseGridSize()));})
+createGridUnits(numOfColumnsRows);
+sizeChanger.addEventListener('click', () => {createGridUnits();})
+
 let checkMouseDown = () => gridContainer.addEventListener('mousedown', () => {debugger; mouseDown = true});
 gridContainer.addEventListener('mouseup', () => {debugger; mouseDown = false})
 
-function createGridUnits(size) {
+let gridSize = () => {
+    numOfColumnsRows = Math.pow(numOfColumnsRows, 2);
+    return numOfColumnsRows
+};
+
+function chooseGridSize () {
+    numOfColumnsRows = parseInt(prompt('Enter the number of rows.'));
+    return numOfColumnsRows;
+}
+
+function createGridUnits(startingSize) {
+    //startingSize is for the developer, in inital bootup
+    if (startingSize != numOfColumnsRows) {
+    chooseGridSize();
+    gridSize();
     deletePrevGrid();
-    for (let i = 0; i < size; i++) {
+    }
+    for (let i = 0; i < numOfColumnsRows; i++) {
         
         gridUnit = document.createElement('div');
         gridUnits.push(gridUnit);
         gridUnits[i].classList.add('grid-unit');
         gridContainer.appendChild(gridUnits[i]);
     }
-    properlySizeGrid(size);
+    properlySizeGrid();
     allowColorChange();
 }
 
@@ -48,14 +64,11 @@ function deletePrevGrid() {
     }
 }
 
-function properlySizeGrid(size) {
+function properlySizeGrid() {
     gridUnits.forEach(gridUnit => {
         gridUnit.style = 
-        `width: ${GRIDCONTAINERSIZE/Math.sqrt(size)}px; 
-        height: ${GRIDCONTAINERSIZE/Math.sqrt(size)}px;`;
+        `width: ${GRIDCONTAINERSIZE/Math.sqrt(numOfColumnsRows)}px; 
+        height: ${GRIDCONTAINERSIZE/Math.sqrt(numOfColumnsRows)}px;`;
     });
 }
 
-function chooseGridSize () {
-    return parseInt(prompt('Enter the number of rows.'));
-}
