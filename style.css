@@ -13,8 +13,12 @@ body {
 }
 
 .grid-unit {
-    border: 2px solid black;
+    border: 1px solid black;
     box-sizing: border-box;
     width: 25px;
     height: 25px;
+}
+
+.grid-unit:hover {
+    background-color: #7a7a7a;
 }
