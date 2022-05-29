@@ -12,8 +12,8 @@ let mouseDown = false;
 createGridUnits(numOfColumnsRows);
 sizeChanger.addEventListener('click', () => {createGridUnits();})
 
-let checkMouseDown = () => gridContainer.addEventListener('mousedown', () => {debugger; mouseDown = true});
-gridContainer.addEventListener('mouseup', () => {debugger; mouseDown = false})
+let checkMouseDown = () => gridContainer.addEventListener('mousedown', () => {mouseDown = true});
+gridContainer.addEventListener('mouseup', () => {mouseDown = false})
 
 let gridSize = () => {
     numOfColumnsRows = Math.pow(numOfColumnsRows, 2);
@@ -46,11 +46,8 @@ function createGridUnits(startingSize) {
 function allowColorChange() {
     gridUnits.forEach(gridUnit => {
         gridUnit.addEventListener('mouseenter', () => {
-                debugger;
                 checkMouseDown();
-                debugger;
                 if (mouseDown == true) {
-                debugger;
                 gridUnit.classList.add('colored-grid-unit');
                 }
         }); 
