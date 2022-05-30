@@ -1,9 +1,10 @@
-const sizeChanger = document.querySelector('button');
-sizeChanger.addEventListener('click', () => {createGridUnits();})
+const clearGrid = document.querySelector('button');
+clearGrid.addEventListener('click', () => {createGridUnits();})
 
+const gridSizerChangerText = document.querySelector('#input-slider h4');
 const gridSizer = document.querySelector('.grid-sizer');
 gridSizer.oninput = () => {createGridUnits()}
-
+ 
 const colorSelector = document.querySelector('#color-selector');
 let currentColor = colorSelector.value;
 colorSelector.oninput = changeCurrentColor();
