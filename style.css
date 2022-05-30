@@ -21,7 +21,7 @@ body {
 }
 
 .grid-unit {
-    border: 1px solid black;
+    /*border: .5px solid black;*/
     box-sizing: border-box;
     width: 25px;
     height: 25px;
@@ -77,4 +77,8 @@ button {
 }
 
 .grid-sizer::-webkit-slider-thumb {
+}
+
+#color-selector {
+    width: 300px;
 }

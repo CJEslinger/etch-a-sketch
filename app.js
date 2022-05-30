@@ -2,8 +2,11 @@ const sizeChanger = document.querySelector('button');
 sizeChanger.addEventListener('click', () => {createGridUnits();})
 
 const gridSizer = document.querySelector('.grid-sizer');
-console.log(gridSizer);
 gridSizer.oninput = () => {createGridUnits()}
+
+const colorSelector = document.querySelector('#color-selector');
+let currentColor = colorSelector.value;
+colorSelector.oninput = changeCurrentColor();
 
 const GRIDCONTAINERSIZE = 400;
 const gridContainer = document.querySelector('.grid-container');
@@ -11,10 +14,9 @@ gridContainer.style = `width: ${GRIDCONTAINERSIZE}px; height: ${GRIDCONTAINERSIZ
 let gridUnit = document.createElement('div');
 let gridUnits = [];
 
-debugger;let numOfColumnsRows = gridSizer.value;
+let numOfColumnsRows = gridSizer.value;
 const STARTINGROWSVALUE = Math.pow(numOfColumnsRows,2);
 numOfColumnsRows = STARTINGROWSVALUE;
-let currentColor = ('#ffffff');
 createGridUnits(STARTINGROWSVALUE);
 
 let mouseDown = false;
@@ -26,9 +28,12 @@ let gridSize = () => {
     return numOfColumnsRows
 };
 
+function changeCurrentColor () {
+    currentColor = colorSelector.value;
+}
+
 function chooseGridSize () {
     //numOfColumnsRows = parseInt(prompt('Enter the number of rows.'));
-    debugger;
     numOfColumnsRows = gridSizer.value;
     return numOfColumnsRows;
 }
@@ -53,16 +58,30 @@ function createGridUnits(startingSize) {
 
 function allowColorChange() {
     gridUnits.forEach(gridUnit => {
+        gridUnit.setAttribute('id', gridUnits.indexOf(gridUnit));
         gridUnit.addEventListener('mouseover', () => {
-                checkMouseDown();
-                if (mouseDown == true) {
+            checkMouseDown();
+            if (mouseDown == true) {
                 gridUnit.classList.add('colored-grid-unit');
+                addCurrentColor(gridUnit);
             }
         }); 
         gridUnit.addEventListener('mousedown', () => {
             gridUnit.classList.add('colored-grid-unit');
+            addCurrentColor(gridUnit);
         });
+        
     });
+    
+}
+
+function addCurrentColor(gUnit) {
+    let unit = document.getElementById(`${gridUnits.indexOf(gUnit)}`)
+    changeCurrentColor();
+    unit.style = 
+    `background-color: ${currentColor};
+    width: ${GRIDCONTAINERSIZE/Math.sqrt(numOfColumnsRows)}px; 
+    height: ${GRIDCONTAINERSIZE/Math.sqrt(numOfColumnsRows)}px;;`;
 }
 
 function deletePrevGrid() {
