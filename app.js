@@ -3,7 +3,11 @@ clearGrid.addEventListener('click', () => {createGridUnits();})
 
 const gridSizerChangerText = document.querySelector('#input-slider h4');
 const gridSizer = document.querySelector('.grid-sizer');
-gridSizer.oninput = () => {createGridUnits()}
+gridSizerChangerText.textContent = `Grid Size: ${gridSizer.value} X ${gridSizer.value}`;
+gridSizer.oninput = () => {
+    createGridUnits();
+    gridSizerChangerText.textContent = `Grid Size: ${gridSizer.value} X ${gridSizer.value}`;
+}
  
 const colorSelector = document.querySelector('#color-selector');
 let currentColor = colorSelector.value;
