@@ -1,13 +1,17 @@
 const sizeChanger = document.querySelector('button');
 sizeChanger.addEventListener('click', () => {createGridUnits();})
 
+const gridSizer = document.querySelector('.grid-sizer');
+console.log(gridSizer);
+gridSizer.oninput = () => {createGridUnits()}
+
 const GRIDCONTAINERSIZE = 400;
 const gridContainer = document.querySelector('.grid-container');
 gridContainer.style = `width: ${GRIDCONTAINERSIZE}px; height: ${GRIDCONTAINERSIZE}px;`
 let gridUnit = document.createElement('div');
 let gridUnits = [];
 
-let numOfColumnsRows = 10;
+debugger;let numOfColumnsRows = gridSizer.value;
 const STARTINGROWSVALUE = Math.pow(numOfColumnsRows,2);
 numOfColumnsRows = STARTINGROWSVALUE;
 let currentColor = ('#ffffff');
@@ -23,7 +27,9 @@ let gridSize = () => {
 };
 
 function chooseGridSize () {
-    numOfColumnsRows = parseInt(prompt('Enter the number of rows.'));
+    //numOfColumnsRows = parseInt(prompt('Enter the number of rows.'));
+    debugger;
+    numOfColumnsRows = gridSizer.value;
     return numOfColumnsRows;
 }
 
